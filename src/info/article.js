@@ -1,0 +1,41 @@
+export const  artInfo = [{
+    id:1,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:2,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:3,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:4,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:5,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:6,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:7,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+},{
+    id:8,
+    title:'这是一个标题',
+    description:'这是一段描述信息',
+    createTime:'2020.01.02'
+}]

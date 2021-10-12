@@ -1,0 +1,31 @@
+export const tags = [{
+    title:'第一大类',
+    key:'Big1',
+    children:[{
+        title:'第一小类',
+        key:'Small1'
+    },{
+        title:'第二小类',
+        key:'Small2'
+    }]
+},{
+    title:'第二大类',
+    key:'Big2',
+    children:[{
+        title:'第三小类',
+        key:'Small3'
+    },{
+        title:'第四小类',
+        key:'Small4'
+    }]
+},{
+    title:'第三大类',
+    key:'Big3',
+    children:[{
+        title:'第五小类',
+        key:'Small5'
+    },{
+        title:'第六小类',
+        key:'Small6'
+    }]
+}]

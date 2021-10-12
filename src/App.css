@@ -1,0 +1,22 @@
+@import '~antd/dist/antd.css';
+.layout {
+    min-height: 100vh;
+    /*background-color: #fff;*/
+}
+.sider {
+    background-color: white;
+    border-right: 1px solid rgb(238, 238, 238);
+}
+.header {
+    min-width: 600px;
+    padding: 0 80px;
+    height: 66px;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.footer {
+    background-color: #fff;
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
