@@ -1,5 +1,6 @@
 .box {
     position: relative;
+    min-width: 1200px;
 }
 .leftBox {
     float: left;
@@ -7,8 +8,10 @@
 .rightBox {
     display: flex;
     justify-content: center;
-    float: right;
-    width: 290px;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 250px;
     padding: 10px;
     border: 1px solid rgb(238, 238, 238);
 }

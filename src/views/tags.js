@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Pubsub from 'pubsub-js'
 // import {artInfo} from '../info/article.js'
 import {BackTop, Card} from "antd";
 import './css/article.css'
@@ -11,15 +10,7 @@ class Tags extends Component {
             type:'',
             list:[]
         }
-        // 接收广播方法
-        Pubsub.unsubscribe('evt')
-        // 接受广播时间并更改数据
-        Pubsub.subscribe('evt',(msg,data) => {
-            this.setState({
-                type:data
-            })
-          this.getCardList()
-        })
+
     }
     componentDidMount() {
        this.getCardList()
@@ -34,9 +25,20 @@ class Tags extends Component {
                 type:arr[arr.length-1]
             }
         }).then(req => {
-            this.setState({
-                list:[...req.data]
-            })
+            let aLink = [];
+            // console.log(response.data)
+            let s= setInterval(()=>{
+                // console.log(1)
+                if(req.data.length !== 0)  aLink.push(req.data.pop());
+                else clearInterval(s)
+                this.setState({
+                    list:aLink
+                })
+            },200)
+            // this.setState({
+            //     list:[...req.data]
+            //
+            // })
             }
         )
 

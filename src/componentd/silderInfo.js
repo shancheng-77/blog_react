@@ -6,6 +6,7 @@ import imgURL1 from  '../static/1.jpg'
 import {connect} from 'react-redux'
 import Pubsub from 'pubsub-js'
 import axios from "axios";
+import './animation.css'
 const { SubMenu } = Menu;
 class SilderInfo extends Component {
     // eslint-disable-next-line no-useless-constructor
@@ -28,7 +29,6 @@ class SilderInfo extends Component {
     }
     // 组件渲染完成后获取数据
     componentDidMount() {
-        console.log(this.props)
         this.getTagList(this.props.sideType);
     }
     // props更改后执行
@@ -40,13 +40,11 @@ class SilderInfo extends Component {
     }
     //获取数据函数
     getTagList =(type)=> {
-        console.log(this.props)
         axios.get('/tags',{
             params:{
                 type
             }
         }).then(res => {
-            console.log(res)
             this.setState({
                 tagList:[...res.data]
             })
@@ -109,16 +107,17 @@ class SilderInfo extends Component {
             //         </div>
             //     )}
             // </div>
+
             <div style={{display:'flex',justifyContent:'center',alignItems:"center"}}>
                 {this.state.tagList.length !== 0?
                     <div>
-                        <img src={imgURL} alt='头像' style={{marginTop:80}}/>
+                        <img src={imgURL} alt='头像' style={{marginTop:80}} className='img'/>
                         <p style={{textAlign:'center',fontSize:30,fontWeight:600}}>分类</p>
-                        <Menu style={{ width: 200,border:0 }} mode="vertical">
+                        <Menu style={{ width: 200,border:0 }} mode="vertical" >
                             {
                                 this.state.tagList.map((value)=>{
                                     return(
-                                        <SubMenu key={value.key} title={value.title}>
+                                        <SubMenu key={value.key} title={value.title} className='sideMenu'>
                                             {value.children?(value.children.map((v)=> {
                                                 return (
                                                     //点击之后发送广播到content组件重新加载

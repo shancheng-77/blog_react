@@ -1,5 +1,5 @@
 import Article from "../views/article";
-import Essay from "../views/essay";
+// import Essay from "../views/essay";
 import Materials from "../views/materials";
 import Other from "../views/other";
 import Content from "../views/content";
@@ -25,7 +25,7 @@ export const mainRouter = [{
 //     isShow: true,
 //     side:'main'
 // },
-    {
+{
     name:'资料',
     key:'materials',
     icon:'icon-_ziliao',

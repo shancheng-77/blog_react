@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Card, BackTop} from 'antd';
 // import {artInfo} from '../info/article.js'
-import {tags} from "../info/tag";
+// import {tags} from "../info/tag";
 import './css/article.css'
+import './css/animation.css'
 import {createFromIconfontCN} from "@ant-design/icons";
 import axios from "axios";
 const IconFont = createFromIconfontCN({
@@ -15,7 +16,6 @@ class Article extends Component {
             name:'erer',
             // 文章信息
             list:[],
-            tagList:[]
         }
 
     }
@@ -26,13 +26,16 @@ class Article extends Component {
     // 进行数据的初始化，应该使用请求
     initialization=() =>{
        axios.get('/article').then(response => {
-           console.log(response.data)
-           this.setState({
-               list:[...response.data],
-               tagList:[...tags]
-           })
+           let aLink = [];
+           // console.log(response.data)
+             let s= setInterval(()=>{
+              if(response.data.length !== 0)  aLink.push(response.data.pop());
+              else clearInterval(s)
+               this.setState({
+                   list:aLink
+               })
+           },200)
        })
-
     }
     render() {
         return (

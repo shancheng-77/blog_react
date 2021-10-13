@@ -6,6 +6,7 @@ import Pubsub from 'pubsub-js'
 import { createFromIconfontCN } from '@ant-design/icons';
 import SilderInfo from "./silderInfo";
 import  {connect} from 'react-redux';
+import './animation.css'
 const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_2463236_whv0btsk0la.js',
 });
@@ -16,11 +17,9 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
     tabChange =()=>{
-        console.log(this.props)
         this.props.history.listen(location => {
             // 最新路由的 location 对象，可以通过比较 pathname 是否相同来判断路由的变化情况
             if (this.props.location.pathname !== location.pathname) {
@@ -33,6 +32,7 @@ class Main extends Component {
         // console.log(this.state.current)
     }
     handleClick = (route) => {
+        Pubsub.publish("head_change",route.key)
         // 修改侧边栏属性
         this.props.sendAction('side_change',route.key)
         sessionStorage.setItem('sideType',route.key)
@@ -47,28 +47,28 @@ class Main extends Component {
     render() {
         return (
             <Layout className="layout">
-                <Sider className='sider' width='250px'>
-                    <SilderInfo />
-                </Sider>
+                <Header className='header'>
+                    <Menu  mode="horizontal"  selectedKeys={[this.props.sideType]} >
+                        {/*循环生成菜单*/}
+                        {/*p => this.props.history.push(route.path)*/}
+                        {/**/}
+                        {
+                            routers.map(route => {
+                                return (
+                                    <Menu.Item key={route.key} onClick={()=>this.handleClick(route)}>
+                                        <IconFont type={route.icon?route.icon:" "}/>
+                                        {route.name}
+                                    </Menu.Item>
+                                )
+                            })
+                        }
+                    </Menu>
+                </Header>
                 <Layout >
-                    <Header className='header'>
-                        <Menu  mode="horizontal"  selectedKeys={[this.props.sideType]} >
-                            {/*循环生成菜单*/}
-                            {/*p => this.props.history.push(route.path)*/}
-                            {/**/}
-                            {
-                                routers.map(route => {
-                                    return (
-                                        <Menu.Item key={route.key} onClick={()=>this.handleClick(route)}>
-                                            <IconFont type={route.icon?route.icon:" "}/>
-                                            {route.name}
-                                        </Menu.Item>
-                                    )
-                                })
-                            }
-                        </Menu>
-                    </Header>
-                    <Content style={{backgroundColor:'#fff',minHeight:'800'}}>
+                    <Sider className='sider' width='250px'>
+                        <SilderInfo />
+                    </Sider>
+                    <Content style={{backgroundColor:'#fff',minHeight:700}}>
                         <Switch>
                             {mainRouter.map((route,i)=> {
                                 return <Route key={i} path={route.path} exact={route.exact} render={routeProps => {
@@ -80,6 +80,8 @@ class Main extends Component {
                             })}
                         </Switch>
                     </Content>
+                </Layout>
+                <Layout>
                     <Footer className='footer'>Footer</Footer>
                 </Layout>
             </Layout>
@@ -99,4 +101,5 @@ const  mapDispatchToProps = (dispatch)=>{
 const mapStateToProps = (state,ownProps) => {
     return state
 }
+
 export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Main));

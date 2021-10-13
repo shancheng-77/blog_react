@@ -9,7 +9,7 @@ import axios from "axios";
 // 设置路由
 import {BrowserRouter as Router, Switch, Route,Redirect} from 'react-router-dom'
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <Router>
         <Switch>
             <Route path="/welcome" render={routerProps => <Welcome {...routerProps}/>}/>
@@ -28,7 +28,7 @@ ReactDOM.render(
         </div>
     </Router>
 
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
 
