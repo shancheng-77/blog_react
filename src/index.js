@@ -18,7 +18,7 @@ ReactDOM.render(
         </Switch>
         <div style={{display:'none'}}>
             {
-                axios.defaults.baseURL='http://localhost:4000'
+                axios.defaults.baseURL='http://114.55.36.21:4000'
             }
             {
                 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'

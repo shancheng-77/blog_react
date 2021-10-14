@@ -37,9 +37,9 @@ class Other extends Component {
     }
     getInfo = () => {
         axios.get('/project').then(res => {
-            let data = [...res.data.Info]
+            let data = [...res.data]
             this.setState({
-               main:res.data.Info
+               main:res.data
             })
             return data
             // console.log(res.data.Info)
